@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 const decoder = require('html-encoder-decoder');
 
 class QuestionCard extends Component {
+  constructor(){
+    super();
+    this.state = {
+      timer: 10
+    }
+  }
+  componentDidMount(){
+    setInterval(()=>{
+      this.setState({
+        timer: this.state.timer - 1
+      })
+    }, 1000);
+  }
   submitAnswer=(e) => {
     e.preventDefault();
     this.props.check(e.target.innerText);
@@ -17,6 +30,9 @@ class QuestionCard extends Component {
     
     return (
       <div className="questionCard">
+        <div>
+            <h4>{this.state.timer}</h4>
+        </div>
         <h2 className="questionCard__question">{decoder.decode(question)}</h2>
         <ul className="questionCard__list">
           {answerList.map(item=>{

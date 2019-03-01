@@ -46,7 +46,6 @@ class App extends Component {
     }
   }
 
-
   submitGame = (e) => {
     e.preventDefault();
     const category = e.target.category.value;
