@@ -49,9 +49,16 @@ class Game extends Component {
     if(!this.props.questions){
       return <h1>Loading</h1>
     }
+    if(!this.props.questions[this.state.index]){
+      return <h1>Loading</h1>
+    }
+    let answerList = this.props.questions[this.state.index].incorrect_answers;
+    answerList = answerList.filter(()=>true);
+    let random = Math.floor(Math.random()*(answerList.length+1));
+    answerList.splice(random, 0, this.props.questions[this.state.index].correct_answer);
     return (
       <div className="game">
-        <AudioPlayer src="./audio/main.mp3" autoPlay loop={true} volume={0.3}/>
+        <AudioPlayer src="./audio/main.mp3" autoPlay loop={true} volume={0.5}/>
         <div className="game__stats">
           <div className="game__question">
             <h4>{this.state.index + 1}/{this.state.questionsNum}</h4>
@@ -60,7 +67,8 @@ class Game extends Component {
             <h4>Score: {this.state.score}</h4>
           </div>
         </div>
-        <QuestionCard card={this.props.questions[this.state.index]} check={this.checkAnswer}/>
+        <QuestionCard card={this.props.questions[this.state.index]} check={this.checkAnswer}
+                      list={answerList}/>
         <div className="game__exit">
           <button onClick={this.exitGame}>Exit?</button>
         </div>

@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 
 class Score extends Component {
   render() {
-    if(!this.props.points){
-      return <h1>Loading Final Score</h1>
-    }
     if(this.props.points < 3) {
       return (
         <h1>Sorry, you got a score of {this.props.points}/{this.props.questions}. Try harder next time.</h1>

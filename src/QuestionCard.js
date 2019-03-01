@@ -5,15 +5,23 @@ class QuestionCard extends Component {
   constructor(){
     super();
     this.state = {
-      timer: 10
+      timer: 60
     }
   }
   componentDidMount(){
-    setInterval(()=>{
+    this.int = setInterval(()=>{
       this.setState({
         timer: this.state.timer - 1
       })
     }, 1000);
+  }
+  componentDidUpdate(){
+    if(this.state.timer<1){
+      this.props.check("");
+    }
+  }
+  componentWillUnmount(){
+    clearInterval(this.int);
   }
   submitAnswer=(e) => {
     e.preventDefault();
@@ -23,20 +31,16 @@ class QuestionCard extends Component {
     if(!this.props.card){
       return<h1>Loading</h1>
     }
-    let {correct_answer, incorrect_answers, question} = this.props.card;
-    let answerList = incorrect_answers.filter(()=>true);
-    let random = Math.floor(Math.random()*(answerList.length+1));
-    answerList.splice(random, 0, correct_answer);
-    
+    let {question} = this.props.card;
     return (
       <div className="questionCard">
         <div>
-            <h4>{this.state.timer}</h4>
+            <h2>Timer: {this.state.timer}</h2>
         </div>
         <h2 className="questionCard__question">{decoder.decode(question)}</h2>
         <ul className="questionCard__list">
-          {answerList.map(item=>{
-            return <li onClick={this.submitAnswer}>{decoder.decode(item)}</li>
+          {this.props.list.map(item=>{
+            return <li onClick={this.submitAnswer} key={item}>{decoder.decode(item)}</li>
           })}
         </ul>
       </div>
