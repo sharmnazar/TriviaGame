@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+const decoder = require('html-encoder-decoder');
 
 class QuestionCard extends Component {
+  submitAnswer=(e) => {
+    e.preventDefault();
+    this.props.check(e.target.innerText);
+  }
   render() {
     if(!this.props.card){
       return<h1>Loading</h1>
@@ -12,10 +17,10 @@ class QuestionCard extends Component {
     
     return (
       <div className="questionCard">
-        <h2 className="questionCard__question">{question}</h2>
+        <h2 className="questionCard__question">{decoder.decode(question)}</h2>
         <ul className="questionCard__list">
           {answerList.map(item=>{
-            return <li>{item}</li>
+            return <li onClick={this.submitAnswer}>{decoder.decode(item)}</li>
           })}
         </ul>
       </div>

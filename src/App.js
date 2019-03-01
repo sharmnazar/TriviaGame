@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import './index.scss';
 import Home from './Home';
 import Footer from './Footer';
@@ -20,7 +20,29 @@ class App extends Component {
     }
     this.categories = {
       generalKnowledge: 9,
-      sports: 21
+      books: 10,
+      film: 11,
+      music: 12,
+      musicals: 13,
+      tv: 14,
+      videoGames: 15,
+      boardGames: 16,
+      scienceNature: 17,
+      computers: 18,
+      math: 19,
+      mythology: 20,
+      sports: 21,
+      geography: 22,
+      history: 23,
+      politics: 24,
+      art: 25,
+      celebrities: 26,
+      animals: 27,
+      vehicles: 28,
+      comics: 29,
+      gadgets: 30,
+      animeManga: 31,
+      cartoons: 32
     }
   }
 

@@ -4,7 +4,7 @@ class GameHeader extends Component {
   render() {
     return (
       <div className="gameHeader">
-        <h3>0:00</h3>
+        <h3>How much do you know?!</h3>
       </div>
     )
   }
