@@ -9,6 +9,8 @@ class GameForm extends Component {
             <label className="gameForm__form--category">
               <h4>Category: </h4>
             </label>
+
+
             <select className="gameForm__form--catSelect" name="category" required >
                 <option value="generalKnowledge">General Knowledge</option>
                 <option value="books">Books</option>
@@ -34,6 +36,8 @@ class GameForm extends Component {
                 <option value="animeManga">Anime and Manga</option>
                 <option value="cartoons">Cartoons and Animations</option>
             </select>
+
+            
           </div>
           <div>
             <label className="gameForm__form--difficulty">
